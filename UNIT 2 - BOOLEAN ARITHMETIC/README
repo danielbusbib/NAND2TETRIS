@@ -1,0 +1,31 @@
+bsbdaniel1234, noam.alt
+===============================================================================
+Daniel Busbib, ID 336224084, daniel.busbib@mail.huji.ac.il
+Noam Altshuler, ID 207406711 noam.altshuler@mail.huji.ac.il
+===============================================================================
+                           Project 2 - Boolean Arithmetic
+                           ------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+ShiftLeft.hdl -And16 (input and 0)
+ShiftRight.hdl - 2 Not16
+HalfAdder.hdl - Xor(sum) , And(carry)
+FullAdder.hdl - 2 HalfAdder and one Or gate
+Add16.hdl - 16 FullAdders
+Inc16.hdl - Add16 gate
+ALU.hdl - 6 Mux16, 3 Not16, Add16, And16, 2 Or8Way, Or, Not gates
+Include other files required by your project, if there are any.
+
+Remarks
+-------
+* The README file must contain the following:
+- In the first line: login(s) of the author(s), 
+separated by commas and nothing else! 
+If you work alone, do not include a comma. 
+Logins should be identical to the names of your home folders and are 
+case-sensitive.
+- Name(s), email(s) and ID(s) of the project's author(s).
+- Any remarks you have about your submission.
