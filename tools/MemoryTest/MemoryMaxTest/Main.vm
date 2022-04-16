@@ -1,0 +1,250 @@
+function Main.main 3
+push constant 3
+call Array.new 1
+pop local 1
+push constant 0
+push local 1
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 1
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 1
+add
+push constant 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+call Memory.max 1
+pop local 0
+push constant 8000
+push local 0
+call Memory.poke 2
+pop temp 0
+push local 1
+call Array.dispose 1
+pop temp 0
+push constant 3
+call Array.new 1
+pop local 1
+push constant 0
+push local 1
+add
+push constant 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 1
+add
+push constant 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 1
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+call Memory.max 1
+pop local 0
+push constant 8001
+push local 0
+call Memory.poke 2
+pop temp 0
+push local 1
+call Array.dispose 1
+pop temp 0
+push constant 3
+call Array.new 1
+pop local 1
+push constant 0
+push local 1
+add
+push constant 5
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 1
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 1
+add
+push constant 3
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+call Memory.max 1
+pop local 0
+push constant 8002
+push local 0
+call Memory.poke 2
+pop temp 0
+push local 1
+call Array.dispose 1
+pop temp 0
+push constant 3
+call Array.new 1
+pop local 1
+push constant 0
+push local 1
+add
+push constant 10
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 1
+add
+push constant 10
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 1
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+call Memory.max 1
+pop local 0
+push constant 8003
+push local 0
+call Memory.poke 2
+pop temp 0
+push local 1
+call Array.dispose 1
+pop temp 0
+push constant 5
+call Array.new 1
+pop local 1
+push constant 0
+push local 1
+add
+push constant 2
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 1
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 1
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push local 1
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push local 1
+add
+push constant 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+call Memory.max 1
+pop local 0
+push constant 8004
+push local 0
+call Memory.poke 2
+pop temp 0
+push local 1
+call Array.dispose 1
+pop temp 0
+push constant 1
+neg
+call MyClass.new 1
+pop local 2
+push local 2
+call Memory.max 1
+pop local 0
+push constant 8005
+push local 0
+call Memory.poke 2
+pop temp 0
+push local 2
+call MyClass.dispose 1
+pop temp 0
+push constant 1
+call MyClass.new 1
+pop local 2
+push local 2
+call Memory.max 1
+pop local 0
+push constant 8006
+push local 0
+call Memory.poke 2
+pop temp 0
+push local 2
+call MyClass.dispose 1
+pop temp 0
+push constant 3
+call MyClass.new 1
+pop local 2
+push local 2
+call Memory.max 1
+pop local 0
+push constant 8007
+push local 0
+call Memory.poke 2
+pop temp 0
+push local 2
+call MyClass.dispose 1
+pop temp 0
+push constant 0
+return

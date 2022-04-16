@@ -1,0 +1,66 @@
+// A test for Memory.max function: checks behaviour for arrays of different values and for a simple object of "MyClass".
+
+class Main {
+    function void main() {
+        var int i;
+        var Array a;
+        var MyClass b;
+		
+		// Array checks
+		
+        let a = Array.new(3);
+        let a[0] = 0;
+        let a[1] = 1;
+        let a[2] = 2;
+        let i = Memory.max(a);
+        do Memory.poke(8000, i); // RAM[8000] = 2
+        do a.dispose();
+        let a = Array.new(3);
+        let a[0] = 3;
+        let a[1] = 2;
+        let a[2] = 1;
+        let i = Memory.max(a);
+        do Memory.poke(8001, i); // RAM[8001] = 3
+        do a.dispose();
+        let a = Array.new(3);
+        let a[0] = -5;
+        let a[1] = -1;
+        let a[2] = -3;
+        let i = Memory.max(a);
+        do Memory.poke(8002, i); // RAM[8002] = -1
+        do a.dispose();
+        let a = Array.new(3);
+        let a[0] = -10;
+        let a[1] = 10;
+        let a[2] = 0;
+        let i = Memory.max(a);
+        do Memory.poke(8003, i); // RAM[8003] = 10
+        do a.dispose();
+        let a = Array.new(5);
+        let a[0] = -2;
+        let a[1] = -1;
+        let a[2] = 0;
+        let a[3] = 1;
+        let a[4] = 2;
+        let i = Memory.max(a);
+        do Memory.poke(8004, i); // RAM[8004] = 2
+        do a.dispose();
+
+		// Object checks
+
+        let b = MyClass.new(-1);
+        let i = Memory.max(b);
+        do Memory.poke(8005, i); // RAM[8005] = 2
+        do b.dispose();
+        let b = MyClass.new(1);
+        let i = Memory.max(b);
+        do Memory.poke(8006, i); // RAM[8006] = 2
+        do b.dispose();
+        let b = MyClass.new(3);
+        let i = Memory.max(b);
+        do Memory.poke(8007, i); // RAM[8007] = 3
+        do b.dispose();
+
+        return;
+    }
+}

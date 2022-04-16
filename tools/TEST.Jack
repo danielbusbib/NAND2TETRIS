@@ -1,0 +1,9 @@
+class TEST{
+	field int x;
+	constructor TEST new(){
+	var int i;
+	let x=1>0>1;
+	return this;
+}
+
+}

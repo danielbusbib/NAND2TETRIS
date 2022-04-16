@@ -1,0 +1,15 @@
+class MyClass {
+    field int a,b,c;
+
+    constructor MyClass new(int i) {
+        let a = 0;
+        let b = 2;
+        let c = i;
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}
