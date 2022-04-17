@@ -1,0 +1,31 @@
+bartsimp, lisasimp
+===============================================================================
+Bart Simpson, ID 011111111, bart@mail.huji.ac.il
+Lisa Simpson, ID 022222222, lisa@mail.huji.ac.il
+===============================================================================
+
+                           Project 5 - Computer Architecture
+                           ---------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+ExtendAlu.hdl - 
+CpuMul.hdl - extension of
+CPU.hdl - Built with the architecture supplied in the lectures,
+with a g function for jump, and our additions on loading the chips
+Memory.hdl - 
+Computer.hdl - A combination of the rom, ram and cpu.
+Include other files required by your project, if there are any.
+
+Remarks
+-------
+* The README file must contain the following:
+- In the first line: login(s) of the author(s), 
+separated by commas and nothing else! 
+If you work alone, do not include a comma. 
+Logins should be identical to the names of your home folders and are 
+case-sensitive.
+- Name(s), email(s) and ID(s) of the project's author(s).
+- Any remarks you have about your submission.

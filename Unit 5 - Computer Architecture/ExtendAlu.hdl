@@ -1,0 +1,40 @@
+// This file is part of nand2tetris, as taught in The Hebrew University,
+// and was written by Aviv Yaish, and is published under the Creative 
+// Common Attribution-NonCommercial-ShareAlike 3.0 Unported License 
+// https://creativecommons.org/licenses/by-nc-sa/3.0/
+
+// The inputs of the extended ALU are instruction[9], x[16], y[16].
+// The output is defined as follows:
+// If instruction[7..8] == 1, 1, the output is the same as the regular ALU,
+// where instruction[5]=zx, instruction[4]=nx, ..., instruction[0]=no.
+// If instruction[8] == 0, the output will be a shift of the input:
+// - If instruction[4] == 0, the input "y" will be shifted, otherwise "x", 
+// - If instruction[5] == 0, the shift will be a right-shift, otherwise left.
+
+CHIP ExtendAlu {
+     IN x[16], y[16], instruction[9];
+     OUT out[16], zr, ng;
+     
+     PARTS:
+     // Put you code here:
+     ALU(x=x ,y=y ,zx=instruction[5] ,nx=instruction[4] ,zy=instruction[3], ny=instruction[2] ,f=instruction[1]
+      ,no=instruction[0] ,out=outALU ,zr=zrALU ,ng=ngALU );
+     //ins[8]==0:
+     Mux16(a=y, b=x, sel=instruction[4], out=inp);
+     ShiftLeft(in=inp, out=outleft);
+     ShiftRight(in=inp, out=outright);
+     Mux16(a=outright, b=outleft, sel=instruction[5], out=outshift,out[0..7]=outshift07, out[8..15]=outshift815 , out[15]=ngShift);
+
+     And(a=instruction[7], b=instruction[8], out=selout);
+     Mux16(a=outshift, b=outALU, sel=selout, out=out);
+     // if (out == 0) set zr = 1
+     Or8Way(in=outshift07, out=oroutshift07);
+     Or8Way(in=outshift815, out=oroutshift815);
+     Or(a=oroutshift07, b=oroutshift815, out=uzr);
+     Not(in=uzr, out=zrShift);
+
+
+     Mux(a=zrShift, b=zrALU, sel=selout, out=zr);
+     Mux(a=ngShift, b=ngALU, sel=selout, out=ng);
+
+}
