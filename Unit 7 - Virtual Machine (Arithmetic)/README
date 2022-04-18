@@ -1,0 +1,31 @@
+bsbdaniel1234, noam.alt
+===============================================================================
+Daniel Busbib, ID 336224084, daniel.busbib@mail.huji.ac.il
+Noam Altshuler, ID 207406711 noam.altshuler@mail.huji.ac.il
+===============================================================================
+
+
+                           Project 7 - Virtual Machine (Arithmetic)
+                           ----------------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+VMtranslator - The executable.
+Makefile - A makefile for the project.
+Main.py - uses the parser and the code writer to complete a full VM file translation to ASM file.
+Parser.py - parses the VM Code like we did in ex6, identifies the type of the command and the memory location.
+CodeWriter.py - translates the VM Code line to Hack machine language, we created cases for every instance.
+Include other files required by your project, if there are any.
+
+Remarks
+-------
+* The README file must contain the following:
+- In the first line: login(s) of the author(s), 
+separated by commas and nothing else! 
+If you work alone, do not include a comma. 
+Logins should be identical to the names of your home folders and are 
+case-sensitive.
+- Name(s), email(s) and ID(s) of the project's author(s).
+- Any remarks you have about your submission.
