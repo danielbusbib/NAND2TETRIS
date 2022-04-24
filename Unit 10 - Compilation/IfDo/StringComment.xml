@@ -1,0 +1,38 @@
+<class>
+<keyword> class </keyword>
+<identifier> StringComment </identifier>
+<symbol> { </symbol>
+<subroutineDec>
+<keyword> method </keyword>
+<keyword> void </keyword>
+<identifier> blaBla </identifier>
+<symbol> ( </symbol>
+<parameterList>
+</parameterList>
+<symbol> ) </symbol>
+<subroutineBody>
+<symbol> { </symbol>
+<varDec>
+<keyword> var </keyword>
+<identifier> String </identifier>
+<identifier> message </identifier>
+<symbol> ; </symbol>
+</varDec>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> message </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> "The  </identifier>
+</term>
+</expression>
+<keyword> let </keyword>
+</letStatement>
+</statements>
+<identifier> message </identifier>
+</subroutineBody>
+</subroutineDec>
+<symbol> = </symbol>
+</class>
