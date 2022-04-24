@@ -13,7 +13,7 @@ class JackTokenizer:
     """
     KEYWORDS = {"class", "constructor", "function", "method", "field", "static", "var", "int", "char", "boolean",
                 "void", "true", "false", "null", "this", "let", "do", "if", "else", "while", "return"}
-    SYMBOL = {'{', '}', '(', ')', '[', ']', '.', ',', ';', '+', '-', '*', '/', '&', '<', '>', '=', '~', '#', '^', '|'}
+    SYMBOL = {'{', '}', '(', ')', '[', ']', '.', ',', ';', '+', '-', '*', '/', '&', '<', '>', '=', '~', '^', '#', '|'}
 
     def __init__(self, input_stream: typing.TextIO) -> None:
         """Opens the input stream and gets ready to tokenize it.
@@ -25,52 +25,16 @@ class JackTokenizer:
         # A good place to start is:
         self.tokens_from_line = []
         self.data = input_stream.read().splitlines()
-        print(self.data)
         self.line = 0
         self.peeked = 0
         self.c_token = -1
         self.cur_line = self.data[0]
         self._split_line_to_tokens()
 
-    # def back(self):
-    #     def _split_line_to_tokens(self):
-    #         stringy = ""
-    #         self.tokens_from_line = []
-    #         # print('pp ', self.cur_line)
-    #         for line in self.data:
-    #             self.cur_line = line
-    #             if '//' in self.cur_line[:2] or '/**' in self.cur_line[:3] or "*" in self.cur_line[1:2]:
-    #                 continue
-    #             for c in self.cur_line:
-    #                 if "//" in stringy:
-    #                     break
-    #                 if c == "/" and len(stringy) == 0:
-    #                     break
-    #                 if c != ' ':
-    #                     stringy += c
-    #                 if stringy == '\t':
-    #                     stringy = ''
-    #                 if c in JackTokenizer.SYMBOL or c in JackTokenizer.KEYWORDS:
-    #                     if stringy[:-1] != "":
-    #                         self.tokens_from_line.append(stringy[:-1])
-    #                     self.tokens_from_line.append(c)
-    #                     stringy = ""
-    #                 elif c == ' ':
-    #                     if stringy == "":
-    #                         continue
-    #                     if stringy[0] == '"':
-    #                         stringy += ' '
-    #                         continue
-    #                     self.tokens_from_line.append(stringy)
-    #                     stringy = ""
-    #             if stringy:
-    #                 self.tokens_from_line.append(stringy)
-
     def _split_line_to_tokens(self):
         stringy = ""
         self.tokens_from_line = []
         flag = False
-        # print('pp ', self.cur_line)
         for line in self.data:
             self.cur_line = " ".join(line.split('\t'))
             if '/*' in self.cur_line and '*/' in self.cur_line:
@@ -248,8 +212,3 @@ class JackTokenizer:
         """
         # Your code goes here!
         return self.tokens_from_line[self.c_token][1:-1]
-# ll = ['class WhiteSpace{', '\tmethod\tvoid\tmain\t(\tint\t\ti\t)\t{', '\tlet\ti = i + 1;', '\tlet i\t=\ti\t+\t1\t;', '\treturn;', '\t}', '', '}', '\t', '\t\t\t']
-# for y in ll:
-#     g = "".join(y.split('\t'))
-#     print(g)
-# print(ll)
