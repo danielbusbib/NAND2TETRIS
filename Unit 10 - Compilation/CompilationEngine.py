@@ -15,6 +15,11 @@ class CompilationEngine:
     output stream.
     """
     # add global sets
+    TYPES = {"INT_CONST", "STRING_CONST", "KEYWORD"}
+    UN_OPS = {'-', '~', '#', '^'}
+    F_S = {"static", "field"}
+    CLASS_OPS = {"constructor", "function", "method"}
+    STATEMENTS = {"let", "if", "while", "do", "return"}
     OPS = {'+', '-', '*', '/', '&', '<', '>', '|', '&', '=', "&lt;", "&gt;", "&amp;"}
 
     def __init__(self, input_stream: typing.TextIO,
@@ -30,12 +35,6 @@ class CompilationEngine:
         self.in_file = input_stream
         self.tokenizer = JackTokenizer(input_stream)
         self.cur_indent = ""
-
-    def __add_indent(self):
-        self.cur_indent += "    "
-
-    def __rm_indent(self):
-        self.cur_indent = self.cur_indent[:-4]
 
     def __write_line(self, token, val):
         self.out_file.write("<" + token + "> " + val + " </" + token + ">" + NEXT_LINE)
@@ -69,14 +68,12 @@ class CompilationEngine:
         self.__advance_and_write()  # class
         self.__advance_and_write()  # class name
         self.__advance_and_write()  # {
-        # maybe change to WHILE !
         c = self.tokenizer.peek()
-        print(self.tokenizer.tokens_from_line)
-        print(c)
-        while c in {"static", "field"}:
+
+        while c in CompilationEngine.F_S:
             self.compile_class_var_dec()
             c = self.tokenizer.peek()
-        while c in {"constructor", "function", "method"}:
+        while c in CompilationEngine.CLASS_OPS:
             self.compile_subroutine()
             c = self.tokenizer.peek()
         self.__advance_and_write()  # }
@@ -153,11 +150,9 @@ class CompilationEngine:
         """
         # Your code goes here!
         self.write_start_token("statements")
-        print(self.tokenizer.tokens_from_line)
-        print(self.tokenizer.c_token)
+
         p = self.tokenizer.peek()
-        print(p)
-        while p in {"let", "if", "while", "do", "return"}:
+        while p in CompilationEngine.STATEMENTS:
             if p == "let":
                 self.compile_let()
             elif p == "if":
@@ -169,6 +164,7 @@ class CompilationEngine:
             elif p == "return":
                 self.compile_return()
             p = self.tokenizer.peek()
+
         self.write_end_token("statements")
 
     def compile_do(self) -> None:
@@ -242,6 +238,7 @@ class CompilationEngine:
             self.__advance_and_write()  # {
             self.compile_statements()
             self.__advance_and_write()  # }
+
         self.write_end_token("ifStatement")
 
     def compile_expression(self) -> None:
@@ -268,14 +265,14 @@ class CompilationEngine:
         """
         # Your code goes here!
         self.write_start_token("term")
-        if self.tokenizer.peek_token_type(self.tokenizer.peek()) in {"INT_CONST", "STRING_CONST", "KEYWORD"}:
+        if self.tokenizer.peek_token_type(self.tokenizer.peek()) in CompilationEngine.TYPES:
             self.__advance_and_write()
             self.write_end_token("term")
             return
         # complete
         tok = self.tokenizer.peek()
-        print('tok:', tok)
         toke_type = self.tokenizer.peek_token_type(tok)
+
         if toke_type == "IDENTIFIER":
             self.__advance_and_write()
             if self.tokenizer.peek() == "[":
@@ -300,7 +297,7 @@ class CompilationEngine:
             self.compile_expression()
             self.__advance_and_write()  # )
 
-        elif self.tokenizer.peek() in {'-', '~', '^', "#"}:
+        elif self.tokenizer.peek() in CompilationEngine.UN_OPS:
             self.__advance_and_write()
             self.compile_term()
 
@@ -319,4 +316,5 @@ class CompilationEngine:
         while self.tokenizer.peek() == ',':
             self.__advance_and_write()  # ,
             self.compile_expression()
+
         self.write_end_token("expressionList")
