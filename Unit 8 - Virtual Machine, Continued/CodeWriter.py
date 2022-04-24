@@ -59,7 +59,6 @@ class CodeWriter:
         self.out_file.write("A=M" + NEXT_LINE)
         self.out_file.write("D=M" + NEXT_LINE)
         self.out_file.write("@" + label + NEXT_LINE)
-        # self.out_file.write("@" + self.file_name + "." + label + NEXT_LINE)
 
         self.out_file.write("D;JNE" + NEXT_LINE)
 
@@ -72,9 +71,7 @@ class CodeWriter:
 
     def write_call(self, function_name: str, num_args: int) -> None:
         self.func_counter += 1
-        # print(self.func_counter, 'll')
         CodeWriter.FUNC_C += 1
-        # print(CodeWriter.FUNC_C, ';;')
         self.out_file.write("@RETURN" + str(self.func_counter) + NEXT_LINE)
         self.out_file.write("D=A" + NEXT_LINE)
         # self.out_file.write("@SP" + NEXT_LINE)
